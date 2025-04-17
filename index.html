@@ -1,1 +1,88 @@
-<img src="https://wymarrich.github.io/menu.jpeg"/>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Makanan Mie Ayam Pak Dul</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    .menu-image {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Popup styling */
+    .popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      display: none;
+    }
+
+    .popup img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.5);
+    }
+
+    .popup.show {
+      display: flex;
+    }
+
+    .popup::after {
+      content: '✕';
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="https://wymarrich.github.io/menu.jpeg" alt="Menu Makanan" class="menu-image">
+
+  <div class="popup" id="popup">
+    <img src="https://wymarrich.github.io/lokasi.png" alt="Lokasi">
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash;
+      const popup = document.getElementById('popup');
+
+      if (hash === '#lok') {
+        popup.classList.add('show');
+      }
+
+      popup.addEventListener('click', () => {
+        popup.classList.remove('show');
+        history.replaceState("", document.title, window.location.pathname + window.location.search);
+      });
+    });
+  </script>
+
+</body>
+</html>
