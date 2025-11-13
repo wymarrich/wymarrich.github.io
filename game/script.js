@@ -577,16 +577,19 @@ function endGame() {
  */
 function showGameOverScreen() {
     const gameOverScreen = document.getElementById('gameOverScreen');
-    const mieResultImage = document.getElementById('mieResultImage');
 
-    // Map topping ke image
+    // Update background image based on selected topping
     const imageMap = {
         'sambal': 'assets/game-over/mie-kena-sambal.png',
         'pangsit': 'assets/game-over/mie-kena-pangsit.png',
         'daunbawang': 'assets/game-over/mie-kena-daunbawang.png'
     };
 
-    mieResultImage.src = imageMap[gameState.selectedTopping] || imageMap['sambal'];
+    const backgroundImage = imageMap[gameState.selectedTopping] || imageMap['sambal'];
+    gameOverScreen.style.backgroundImage = `
+        linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%),
+        url('${backgroundImage}')
+    `;
 
     document.getElementById('finalScore').textContent = gameState.score;
     document.getElementById('finalHighScore').textContent = gameState.highScore;
