@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Game Mie Ayam interaktif - Mainkan game menghindari topping mie ayam. Nikmati game yang seru dari Mie Ayam Pak Dul dan Bumiayu.">
+    <meta name="keywords" content="mie ayam, mie ayam pak dul, mie ayam bumiayu, game mie ayam, game menghindari topping, mie ayam menghindari topping, game online gratis">
+    <meta name="author" content="Mie Ayam Pak Dul">
+    <meta name="theme-color" content="#ff6b35">
+
+    <!-- Open Graph untuk social media sharing -->
+    <meta property="og:title" content="Game Mie Ayam Menghindari Topping - Mie Ayam Pak Dul">
+    <meta property="og:description" content="Mainkan game interaktif mie ayam yang seru! Hindari topping yang tidak kamu sukai. Game gratis dari Mie Ayam Pak Dul.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://wymarrich.github.io/game/assets/og-image.png">
+    <meta property="og:url" content="https://wymarrich.github.io/game">
+
+    <!-- Twitter Card untuk Twitter sharing -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Game Mie Ayam Menghindari Topping">
+    <meta name="twitter:description" content="Game mie ayam interaktif - hindari topping pilihan mu!">
+    <meta name="twitter:image" content="https://wymarrich.github.io/game/assets/og-image.png">
+
+    <title>Game Mie Ayam Menghindari Topping - Mie Ayam Pak Dul & Bumiayu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpeg" href="assets/favico-mieayam.jpg">
+</head>
+<body>
+    <!-- Game Container -->
+    <div class="game-wrapper">
+        <!-- Game Canvas -->
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+        <!-- Game UI -->
+        <div class="game-ui">
+            <!-- Score Display -->
+            <div class="score-board">
+                <div class="score-item">
+                    <span class="label">Skor:</span>
+                    <span class="value" id="currentScore">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="label">High Score:</span>
+                    <span class="value" id="highScore">0</span>
+                </div>
+            </div>
+
+            <!-- Mute Button -->
+            <button class="mute-btn" id="muteBtn" title="Mute/Unmute Audio">
+                <span class="mute-icon">🔊</span>
+            </button>
+
+            <!-- Game Over Screen -->
+            <div class="game-over-screen" id="gameOverScreen">
+                <div class="game-over-content">
+                    <h1>GAME OVER!</h1>
+                    <div class="mie-result">
+                        <img id="mieResultImage" src="assets/game-over/mie-kena-sambal.png" alt="Mie Ayam Kena Topping">
+                    </div>
+                    <p class="game-over-score">Skor Akhir: <span id="finalScore">0</span></p>
+                    <p class="game-over-high-score">High Score: <span id="finalHighScore">0</span></p>
+                    <button class="btn-restart" id="restartBtn">Main Lagi</button>
+                </div>
+            </div>
+
+            <!-- Start Screen -->
+            <div class="start-screen" id="startScreen">
+                <div class="start-content">
+                    <h1>🍜 Mie Ayam 🍜</h1>
+                    <h2>Menghindari Topping</h2>
+                    <div class="instructions">
+                        <p>Pilih topping apa yang kamu gasuka! 😶</p>
+                    </div>
+                    <div class="topping-selection">
+                        <div class="topping-option" data-topping="sambal">
+                            <div class="topping-icon">🌶️</div>
+                            <p>Menghindari Sambal</p>
+                        </div>
+                        <div class="topping-option" data-topping="pangsit">
+                            <div class="topping-icon">🥟</div>
+                            <p>Menghindari Pangsit</p>
+                        </div>
+                        <div class="topping-option" data-topping="daunbawang">
+                            <div class="topping-icon">🌿</div>
+                            <p>Menghindari Daun Bawang</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Mie Ayam Pak Dul. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/mieayam.pakdul/" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <span>Instagram</span>
+                </a>
+                <a href="https://linktr.ee/mieayam.pakdul" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <span>Linktree</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
