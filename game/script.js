@@ -114,6 +114,12 @@ function initializeGame() {
     canvas = document.getElementById('gameCanvas');
     ctx = canvas.getContext('2d');
 
+    // Set current year in footer
+    const currentYearElement = document.getElementById('currentYear');
+    if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+    }
+
     // Resize canvas untuk responsive
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
