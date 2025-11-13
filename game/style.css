@@ -629,6 +629,75 @@ html, body {
     }
 }
 
+/* ===== Mobile Controls (Buttons) ===== */
+.mobile-controls {
+    position: relative;
+    width: 100%;
+    padding: 15px 0;
+    z-index: 12;
+    pointer-events: auto;
+    display: none;
+    justify-content: center;
+    gap: 20px;
+}
+
+.mobile-controls.active {
+    display: flex;
+}
+
+.control-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    border: 3px solid white;
+    background: linear-gradient(135deg, #ff6b35 0%, #ff8c5a 100%);
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+    user-select: none;
+    touch-action: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.control-btn:hover {
+    background: linear-gradient(135deg, #ff7a4a 0%, #ff9b6a 100%);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Control buttons show only on mobile */
+@media (max-width: 768px) {
+    .mobile-controls {
+        display: none;
+    }
+
+    .mobile-controls.active {
+        display: flex;
+    }
+
+    .control-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 24px;
+    }
+}
+
+/* Hide controls on desktop */
+@media (min-width: 769px) {
+    .mobile-controls {
+        display: none !important;
+    }
+}
+
 /* ===== Footer ===== */
 footer.footer {
     width: 100%;

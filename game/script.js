@@ -186,6 +186,9 @@ function setupEventListeners() {
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('keyup', handleKeyUp);
 
+    // Mobile button controls
+    initializeMobileButtons();
+
     // Topping selection
     document.querySelectorAll('.topping-option').forEach(option => {
         option.addEventListener('click', selectTopping);
@@ -259,6 +262,56 @@ function handleKeyUp(e) {
 }
 
 /**
+ * ===== MOBILE BUTTON CONTROLS =====
+ * Initialize mobile control buttons
+ */
+function initializeMobileButtons() {
+    const leftBtn = document.getElementById('leftBtn');
+    const rightBtn = document.getElementById('rightBtn');
+
+    if (!leftBtn || !rightBtn) return;
+
+    // Left button - mouse events
+    leftBtn.addEventListener('mousedown', () => {
+        if (gameState.isRunning) player.keys.left = true;
+    });
+    leftBtn.addEventListener('mouseup', () => {
+        player.keys.left = false;
+    });
+    leftBtn.addEventListener('mouseleave', () => {
+        player.keys.left = false;
+    });
+
+    // Right button - mouse events
+    rightBtn.addEventListener('mousedown', () => {
+        if (gameState.isRunning) player.keys.right = true;
+    });
+    rightBtn.addEventListener('mouseup', () => {
+        player.keys.right = false;
+    });
+    rightBtn.addEventListener('mouseleave', () => {
+        player.keys.right = false;
+    });
+
+    // Touch events untuk mobile
+    leftBtn.addEventListener('touchstart', (e) => {
+        if (gameState.isRunning) player.keys.left = true;
+        e.preventDefault();
+    });
+    leftBtn.addEventListener('touchend', () => {
+        player.keys.left = false;
+    });
+
+    rightBtn.addEventListener('touchstart', (e) => {
+        if (gameState.isRunning) player.keys.right = true;
+        e.preventDefault();
+    });
+    rightBtn.addEventListener('touchend', () => {
+        player.keys.right = false;
+    });
+}
+
+/**
  * Mulai game
  */
 function startGame() {
@@ -279,6 +332,11 @@ function startGame() {
 
     // Clear toppings
     toppings = [];
+
+    // Show mobile joystick if on mobile
+    if (window.innerWidth <= 768) {
+        document.getElementById('mobileControls').classList.add('active');
+    }
 
     // Update display
     updateScoreDisplay();
@@ -494,6 +552,9 @@ function isColliding(rect1, rect2) {
 function endGame() {
     gameState.isRunning = false;
     gameState.gameOver = true;
+
+    // Hide mobile joystick
+    document.getElementById('mobileControls').classList.remove('active');
 
     // Stop background music
     stopBackgroundMusic();
